@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mahasiswas', function (Blueprint $table) {
-            $table->id();
-            $table->string('nim', 20)->unique();
-            $table->string('nama');
-$table->string('prodi');
-$table->enum('semester', ['1','2','3','4','5','6','7','8']);
-            $table->timestamps();
+        Schema::table('mahasiswas', function (Blueprint $table) {
+            //
+            $table->string('email', 100)->unique()->after('semester');
+
         });
     }
 
@@ -26,6 +23,8 @@ $table->enum('semester', ['1','2','3','4','5','6','7','8']);
      */
     public function down(): void
     {
-        Schema::dropIfExists('mahasiswas');
+        Schema::table('mahasiswas', function (Blueprint $table) {
+            //
+        });
     }
 };
